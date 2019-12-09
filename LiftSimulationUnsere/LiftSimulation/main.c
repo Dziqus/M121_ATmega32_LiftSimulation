@@ -7,7 +7,6 @@
 
 #include <avr/io.h>
 
-#include "LiftLibrary.h"
 #include "AppIncludes.h"
 
 
@@ -15,7 +14,7 @@
 
 
 void TestFunction(uint8_t* data, uint8_t nrOfBytes);
-void FindBit(char ch);
+uint8_t FindBit(uint8_t ch);
 
 int main(void)
 {
@@ -43,7 +42,7 @@ void TestFunction(uint8_t* data, uint8_t nrOfBytes)
 	}
 }
 
-int FindBit(char ch){
+uint8_t FindBit(uint8_t ch){
 	
 	return (0x72f588 >> ((((ch * 29) >> 5) & 0x7) * 3)) & 0x7;
 }

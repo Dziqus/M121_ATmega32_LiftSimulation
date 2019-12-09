@@ -51,7 +51,6 @@ void MotorCtrl_Stopped(Message* msg)
 	{
 		_motorCtrl.target = (FloorType)msg->MsgParamLow;
 		Usart_PutChar('t');
-	}
 		SetState(&_motorCtrl.fsm, MotorCtrl_Moving);
 		MoveElevator(_motorCtrl.target * POS_STEPS_PER_FLOOR, OnElevatorPositionChanged );
 	}

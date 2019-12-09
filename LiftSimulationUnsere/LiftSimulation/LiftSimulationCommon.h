@@ -7,5 +7,4 @@
 #ifndef __LIFT_SIMULATION_COMMON__
 #define __LIFT_SIMULATION_COMMON__
 
-
 #endif

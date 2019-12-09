@@ -50,7 +50,6 @@ void MotorCtrl_Stopped(Message* msg)
 	if( msg->Id == Message_MoveTo && msg->MsgParamLow < 4)
 	{
 		_motorCtrl.target = (FloorType)msg->MsgParamLow;
-		Usart_PutChar('t');
 		SetState(&_motorCtrl.fsm, MotorCtrl_Moving);
 		MoveElevator(_motorCtrl.target * POS_STEPS_PER_FLOOR, OnElevatorPositionChanged );
 	}
@@ -62,6 +61,9 @@ void MotorCtrl_Moving(Message* msg)
 	if( msg->Id == Message_PosChanged && msg->MsgParamLow == msg->MsgParamHigh)
 	{
 		_motorCtrl.target = (FloorType)msg->MsgParamLow;
+		Usart_PutChar('t');
+		Usart_PutChar(msg->MsgParamLow);
+		SetDoorState(DoorOpen, msg->MsgParamLow);
 		SetState(&_motorCtrl.fsm, MotorCtrl_Stopped);
 	}	
 }

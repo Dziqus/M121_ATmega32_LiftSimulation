@@ -7,6 +7,8 @@
 
 #include "AppIncludes.h"
 
+void Await_DoorClosed(Message* msg);
+void Await_DoorOpen(Message* msg);
 
 MotorController _motorCtrl =
 {
@@ -50,8 +52,8 @@ void MotorCtrl_Stopped(Message* msg)
 	if( msg->Id == Message_MoveTo && msg->MsgParamLow < 4)
 	{
 		_motorCtrl.target = (FloorType)msg->MsgParamLow;
-		SetState(&_motorCtrl.fsm, MotorCtrl_Moving);
-		MoveElevator(_motorCtrl.target * POS_STEPS_PER_FLOOR, OnElevatorPositionChanged );
+		SetDoorState(DoorClosed, _motorCtrl.start);
+		SetState(&_motorCtrl.fsm, Await_DoorClosed);
 	}
 }
 
@@ -60,10 +62,26 @@ void MotorCtrl_Moving(Message* msg)
 {
 	if( msg->Id == Message_PosChanged && msg->MsgParamLow == msg->MsgParamHigh)
 	{
-		_motorCtrl.target = (FloorType)msg->MsgParamLow;
-		Usart_PutChar('t');
-		Usart_PutChar(msg->MsgParamLow);
-		SetDoorState(DoorOpen, msg->MsgParamLow);
-		SetState(&_motorCtrl.fsm, MotorCtrl_Stopped);
+		_motorCtrl.target = (FloorType)msg->MsgParamLow / POS_STEPS_PER_FLOOR;
+		SetState(&_motorCtrl.fsm, Await_DoorOpen);
+		_motorCtrl.start = msg->MsgParamLow / POS_STEPS_PER_FLOOR;
+		SetDoorState(DoorOpen, _motorCtrl.target);
 	}	
+}
+
+void Await_DoorOpen(Message* msg)
+{
+	if (ReadDoorState((FloorType)_motorCtrl.start) == DoorOpen)
+	{
+		SetState(&_motorCtrl.fsm, MotorCtrl_Stopped);
+	}
+}
+
+void Await_DoorClosed(Message* msg)
+{
+	if (ReadDoorState((FloorType)_motorCtrl.start) == DoorClosed)
+	{
+		SetState(&_motorCtrl.fsm, MotorCtrl_Moving);
+		MoveElevator(_motorCtrl.target * POS_STEPS_PER_FLOOR, OnElevatorPositionChanged );
+	}
 }

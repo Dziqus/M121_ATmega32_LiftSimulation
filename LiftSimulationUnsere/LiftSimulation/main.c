@@ -10,11 +10,8 @@
 #include "AppIncludes.h"
 
 
-
-
-
 void TestFunction(uint8_t* data, uint8_t nrOfBytes);
-uint8_t FindBit(uint8_t ch);
+//uint8_t FindBit(uint8_t ch);
 
 int main(void)
 {
@@ -22,6 +19,7 @@ int main(void)
 	Usart_Init();
 	RegisterTestHandler( TestFunction );
 	RegisterFsm(&_motorCtrl.fsm);
+	RegisterFsm(&_mainCtrl.fsm);
 	// letzte Funktion die aufgerufen wird!
 	InitializeStart();
 }
@@ -42,8 +40,8 @@ void TestFunction(uint8_t* data, uint8_t nrOfBytes)
 	}
 }
 
-uint8_t FindBit(uint8_t ch){
-	
-	return (0x72f588 >> ((((ch * 29) >> 5) & 0x7) * 3)) & 0x7;
-}
+//uint8_t FindBit(uint8_t ch){
+	//
+	//return (0x72f588 >> ((((ch * 29) >> 5) & 0x7) * 3)) & 0x7;
+//}
 

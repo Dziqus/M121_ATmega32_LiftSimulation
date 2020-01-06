@@ -6,9 +6,11 @@
  */ 
 
 #include "AppIncludes.h"
+#include "LiftSimulationCommon.h"
 
 void Await_DoorClosed(Message* msg);
 void Await_DoorOpen(Message* msg);
+void Message_ElevatorReady(Message* msg);
 
 MotorController _motorCtrl =
 {
@@ -38,6 +40,7 @@ void MotorCtrl_Initializing(Message* msg)
 	{
 		SetDisplay(Floor0);
 		SetState(&_motorCtrl.fsm, MotorCtrl_Stopped);
+		SendEvent(SignalSourceApp, Message_ElevatorReady, Floor0, 0);
 	}
 }
 
@@ -60,6 +63,7 @@ void MotorCtrl_Stopped(Message* msg)
 
 void MotorCtrl_Moving(Message* msg)
 {
+	SetDisplay((FloorType)msg->MsgParamLow / POS_STEPS_PER_FLOOR);
 	if( msg->Id == Message_PosChanged && msg->MsgParamLow == msg->MsgParamHigh)
 	{
 		_motorCtrl.target = (FloorType)msg->MsgParamLow / POS_STEPS_PER_FLOOR;

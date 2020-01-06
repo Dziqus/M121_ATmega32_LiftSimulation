@@ -9,6 +9,7 @@
 #ifndef APPINCLUDES_H_
 #define APPINCLUDES_H_
 #include "LiftLibrary.h"
+#include "LiftSimulationCommon.h"
 
 typedef enum AppMessages
 {

@@ -63,12 +63,16 @@ void Message_ElevatorReady(Message* msg)
 {
 	//Usart_PutChar(0xD0);
 	//Usart_PutChar(msg->Id);
+	// stopped
+	// wenn target selection made
+	SetState(&_mainCtrl.fsm, MainCtrl_AwaitTargetSelection);
+		
 }
 
 void MainCtrl_AwaitElevatorRequest(Message* msg)
 {
-	Usart_PutChar(0xA0);
-	Usart_PutChar(msg->Id);
+	//Usart_PutChar(0xA0); //this is called when moving
+	//Usart_PutChar(msg->Id);
 
 	if( IS_BUTTON_PRESS( msg ) )
 	{
@@ -89,8 +93,8 @@ void MainCtrl_AwaitElevatorRequest(Message* msg)
 	}
 	if( msg->Id == TimerEvent )
 	{
-		Usart_PutChar(0xA1);
-		Usart_PutChar(_mainCtrl.currentFloor);
+		//Usart_PutChar(0xA1);
+		//Usart_PutChar(_mainCtrl.currentFloor);
 		SetDoorState(DoorClosed, _mainCtrl.currentFloor);
 	}
 	
@@ -107,18 +111,30 @@ void MainCtrl_AwaitElevatorRequest(Message* msg)
 void MainCtrl_AwaitTargetSelection(Message* msg)
 {
 	Usart_PutChar(0xB0);
-	Usart_PutChar(msg->Id);
-	
+	//Usart_PutChar(msg->Id);
+	Usart_PutChar(msg->MsgParamLow);
+	if (IS_BUTTON_PRESS(msg))
+	{
+		if (IS_TARGET_SELECTION(msg->MsgParamLow))
+		{
+			SendEvent(SignalSourceApp, Message_MoveTo, msg->MsgParamLow/POS_STEPS_PER_FLOOR, 0);	
+		}
+	}
 	// TODO: was soll hier passieren
-	
+	// habe ich etwas in der Queue$
+	// wenn ja -> awaitReservation
+	// wenn nei do nothing (repeat)
 }
 
 void MainCtrl_ElevatorMoving(Message* msg)
 {	
-	Usart_PutChar(0xC0);
-	Usart_PutChar(msg->Id);
+	//Usart_PutChar(0xC0);
+	//sart_PutChar(0x00);
+	//Usart_PutChar(msg->Id);
 	
 	// TODO: was soll hier passieren
+	// wenn ein request kommt, addiert eine reservation
+	
 }
 
 

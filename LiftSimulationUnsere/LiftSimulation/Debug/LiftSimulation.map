@@ -27,10 +27,8 @@ Discarded input sections
  .text          0x00000000        0x0 MainController.o
  .data          0x00000000        0x0 MainController.o
  .bss           0x00000000        0x0 MainController.o
- .text.MainCtrl_AwaitTargetSelection
-                0x00000000       0x18 MainController.o
  .text.MainCtrl_ElevatorMoving
-                0x00000000       0x18 MainController.o
+                0x00000000        0x2 MainController.o
  .text.Enqueue  0x00000000       0x2c MainController.o
  .text.Dequeue  0x00000000       0x3e MainController.o
  .text.GetTargetSelection
@@ -246,7 +244,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xbba
+.text           0x00000000      0xbda
  *(.vectors)
  .vectors       0x00000000       0x54 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -329,127 +327,130 @@ END GROUP
                 0x00000092                TestFunction
  .text.main     0x000000c6       0x2a main.o
                 0x000000c6                main
- .text.Message_ElevatorReady
-                0x000000f0        0x2 MainController.o
-                0x000000f0                Message_ElevatorReady
  .text.MainCtrl_Initializing
-                0x000000f2       0x2a MainController.o
-                0x000000f2                MainCtrl_Initializing
- .text.FindBit  0x0000011c       0x1e MainController.o
-                0x0000011c                FindBit
+                0x000000f0       0x2a MainController.o
+                0x000000f0                MainCtrl_Initializing
+ .text.Message_ElevatorReady
+                0x0000011a        0xe MainController.o
+                0x0000011a                Message_ElevatorReady
+ .text.MainCtrl_AwaitTargetSelection
+                0x00000128       0x22 MainController.o
+                0x00000128                MainCtrl_AwaitTargetSelection
+ .text.FindBit  0x0000014a       0x1e MainController.o
+                0x0000014a                FindBit
  .text.GetFloorReservation
-                0x0000013a        0x8 MainController.o
-                0x0000013a                GetFloorReservation
+                0x00000168        0x8 MainController.o
+                0x00000168                GetFloorReservation
  .text.MainCtrl_AwaitElevatorRequest
-                0x00000142       0xac MainController.o
-                0x00000142                MainCtrl_AwaitElevatorRequest
+                0x00000170       0x84 MainController.o
+                0x00000170                MainCtrl_AwaitElevatorRequest
  .text.NotifyCalibrationDone
-                0x000001ee       0x3a MotorCtrl.o
-                0x000001ee                NotifyCalibrationDone
+                0x000001f4       0x3a MotorCtrl.o
+                0x000001f4                NotifyCalibrationDone
  .text.OnElevatorPositionChanged
-                0x00000228        0xe MotorCtrl.o
-                0x00000228                OnElevatorPositionChanged
+                0x0000022e        0xe MotorCtrl.o
+                0x0000022e                OnElevatorPositionChanged
  .text.MotorCtrl_Initializing
-                0x00000236       0x38 MotorCtrl.o
-                0x00000236                MotorCtrl_Initializing
+                0x0000023c       0x38 MotorCtrl.o
+                0x0000023c                MotorCtrl_Initializing
  .text.MotorCtrl_Stopped
-                0x0000026e       0x2a MotorCtrl.o
-                0x0000026e                MotorCtrl_Stopped
+                0x00000274       0x2a MotorCtrl.o
+                0x00000274                MotorCtrl_Stopped
  .text.MotorCtrl_Moving
-                0x00000298       0x54 MotorCtrl.o
-                0x00000298                MotorCtrl_Moving
+                0x0000029e       0x54 MotorCtrl.o
+                0x0000029e                MotorCtrl_Moving
  .text.Await_DoorOpen
-                0x000002ec       0x1a MotorCtrl.o
-                0x000002ec                Await_DoorOpen
+                0x000002f2       0x34 MotorCtrl.o
+                0x000002f2                Await_DoorOpen
  .text.Await_DoorClosed
-                0x00000306       0x2a MotorCtrl.o
-                0x00000306                Await_DoorClosed
+                0x00000326       0x2a MotorCtrl.o
+                0x00000326                Await_DoorClosed
  .text.EnterAtomic
-                0x00000330        0xe ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000330                EnterAtomic
+                0x00000350        0xe ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000350                EnterAtomic
  .text.LeaveAtomic
-                0x0000033e       0x12 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x0000033e                LeaveAtomic
+                0x0000035e       0x12 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x0000035e                LeaveAtomic
  .text.SetState
-                0x00000350       0x20 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000350                SetState
+                0x00000370       0x20 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000370                SetState
  .text.RegisterFsm
-                0x00000370       0x2a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000370                RegisterFsm
+                0x00000390       0x2a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000390                RegisterFsm
  .text.DispatchEvent
-                0x0000039a       0x76 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x0000039a                DispatchEvent
+                0x000003ba       0x76 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000003ba                DispatchEvent
  .text.InitializeCounter
-                0x00000410       0x2a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000410                InitializeCounter
+                0x00000430       0x2a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000430                InitializeCounter
  .text.ReadDoorState
-                0x0000043a       0x10 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x0000043a                ReadDoorState
+                0x0000045a       0x10 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x0000045a                ReadDoorState
  .text.SetDoorState
-                0x0000044a       0x3a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x0000044a                SetDoorState
+                0x0000046a       0x3a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x0000046a                SetDoorState
  .text.MoveElevator
-                0x00000484       0x28 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000484                MoveElevator
+                0x000004a4       0x28 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004a4                MoveElevator
  .text.CalibrateElevatorPosition
-                0x000004ac        0x8 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004ac                CalibrateElevatorPosition
+                0x000004cc        0x8 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004cc                CalibrateElevatorPosition
  .text.SetDisplay
-                0x000004b4        0x6 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004b4                SetDisplay
+                0x000004d4        0x6 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004d4                SetDisplay
  .text.RegisterTestHandler
-                0x000004ba        0xa ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004ba                RegisterTestHandler
+                0x000004da        0xa ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004da                RegisterTestHandler
  .text.Usart_Init
-                0x000004c4       0x12 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004c4                Usart_Init
+                0x000004e4       0x12 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004e4                Usart_Init
  .text.InitializePorts
-                0x000004d6       0x1c ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004d6                InitializePorts
+                0x000004f6       0x1c ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000004f6                InitializePorts
  .text.Usart_PutChar
-                0x000004f2        0x8 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004f2                Usart_PutChar
+                0x00000512        0x8 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000512                Usart_PutChar
  .text.SendEvent
-                0x000004fa       0x76 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000004fa                SendEvent
+                0x0000051a       0x76 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x0000051a                SendEvent
  .text.MakeDoorStates
-                0x00000570       0x8a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000570                MakeDoorStates
+                0x00000590       0x8a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000590                MakeDoorStates
  .text.ProcessMessage
-                0x000005fa       0x8a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000005fa                ProcessMessage
+                0x0000061a       0x8a ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x0000061a                ProcessMessage
  .text.HandleMessage
-                0x00000684       0x52 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000684                HandleMessage
+                0x000006a4       0x52 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000006a4                HandleMessage
  .text.SetInputOutput
-                0x000006d6      0x1bc ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000006d6                SetInputOutput
+                0x000006f6      0x1bc ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000006f6                SetInputOutput
  .text.InitializeStart
-                0x00000892       0x66 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000892                InitializeStart
+                0x000008b2       0x66 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000008b2                InitializeStart
  .text.__vector_1
-                0x000008f8       0x68 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000008f8                __vector_1
+                0x00000918       0x68 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000918                __vector_1
  .text.__vector_13
-                0x00000960       0x6c ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000960                __vector_13
+                0x00000980       0x6c ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000980                __vector_13
  .text.__vector_7
-                0x000009cc       0xa2 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x000009cc                __vector_7
+                0x000009ec       0xa2 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x000009ec                __vector_7
  .text.StartTimer
-                0x00000a6e       0x6e ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000a6e                StartTimer
+                0x00000a8e       0x6e ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000a8e                StartTimer
  .text.__vector_10
-                0x00000adc       0xc2 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
-                0x00000adc                __vector_10
+                0x00000afc       0xc2 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+                0x00000afc                __vector_10
  .text.libgcc.div
-                0x00000b9e       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodqi4.o)
-                0x00000b9e                __udivmodqi4
-                0x00000bb6                . = ALIGN (0x2)
+                0x00000bbe       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodqi4.o)
+                0x00000bbe                __udivmodqi4
+                0x00000bd6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000bb6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000bb6                _exit
-                0x00000bb6                exit
+ .fini9         0x00000bd6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000bd6                _exit
+                0x00000bd6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -468,11 +469,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000bb6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000bd6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000bba                _etext = .
+                0x00000bda                _etext = .
 
-.data           0x00800060       0x34 load address 0x00000bba
+.data           0x00800060       0x34 load address 0x00000bda
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -573,8 +574,8 @@ END GROUP
                 0x00800154                USART_rxBuffer
                 0x00800174                liftDoorState
                 0x0080017c                PROVIDE (__bss_end, .)
-                0x00000bba                __data_load_start = LOADADDR (.data)
-                0x00000bee                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000bda                __data_load_start = LOADADDR (.data)
+                0x00000c0e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080017c        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -663,55 +664,55 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2742
+.debug_info     0x00000000     0x274b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x3fb main.o
- .debug_info    0x000008e1      0x685 MainController.o
- .debug_info    0x00000f66      0x5e0 MotorCtrl.o
- .debug_info    0x00001546     0x11fc ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_info    0x000008e1      0x65a MainController.o
+ .debug_info    0x00000f3b      0x614 MotorCtrl.o
+ .debug_info    0x0000154f     0x11fc ../../Lib\libLiftLibrary.a(LiftLibrary.o)
 
-.debug_abbrev   0x00000000      0xdee
+.debug_abbrev   0x00000000      0xe00
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x1a3 main.o
  .debug_abbrev  0x00000646      0x226 MainController.o
- .debug_abbrev  0x0000086c      0x193 MotorCtrl.o
- .debug_abbrev  0x000009ff      0x3ef ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_abbrev  0x0000086c      0x1a5 MotorCtrl.o
+ .debug_abbrev  0x00000a11      0x3ef ../../Lib\libLiftLibrary.a(LiftLibrary.o)
 
-.debug_line     0x00000000      0xf37
+.debug_line     0x00000000      0xf31
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega32.o
  .debug_line    0x0000001a      0x143 main.o
- .debug_line    0x0000015d      0x2e9 MainController.o
- .debug_line    0x00000446      0x205 MotorCtrl.o
- .debug_line    0x0000064b      0x8ec ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_line    0x0000015d      0x2c5 MainController.o
+ .debug_line    0x00000422      0x223 MotorCtrl.o
+ .debug_line    0x00000645      0x8ec ../../Lib\libLiftLibrary.a(LiftLibrary.o)
 
-.debug_frame    0x00000000      0x5b4
+.debug_frame    0x00000000      0x5ac
  *(.debug_frame)
  .debug_frame   0x00000000       0x40 main.o
- .debug_frame   0x00000040       0xec MainController.o
- .debug_frame   0x0000012c       0xa8 MotorCtrl.o
- .debug_frame   0x000001d4      0x3e0 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_frame   0x00000040       0xd8 MainController.o
+ .debug_frame   0x00000118       0xb4 MotorCtrl.o
+ .debug_frame   0x000001cc      0x3e0 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
 
-.debug_str      0x00000000     0x1035
+.debug_str      0x00000000     0x10a2
  *(.debug_str)
  .debug_str     0x00000000      0x196 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5/crtatmega32.o
  .debug_str     0x00000196      0x3c8 main.o
                                 0x409 (size before relaxing)
- .debug_str     0x0000055e      0x1f6 MainController.o
-                                0x55a (size before relaxing)
- .debug_str     0x00000754       0xfe MotorCtrl.o
-                                0x4de (size before relaxing)
- .debug_str     0x00000852      0x7e3 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_str     0x0000055e      0x263 MainController.o
+                                0x548 (size before relaxing)
+ .debug_str     0x000007c1       0xfe MotorCtrl.o
+                                0x4f0 (size before relaxing)
+ .debug_str     0x000008bf      0x7e3 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
                                 0xb34 (size before relaxing)
 
-.debug_loc      0x00000000     0x14dc
+.debug_loc      0x00000000     0x14c2
  *(.debug_loc)
  .debug_loc     0x00000000       0xe2 main.o
- .debug_loc     0x000000e2      0x32d MainController.o
- .debug_loc     0x0000040f      0x276 MotorCtrl.o
- .debug_loc     0x00000685      0xe57 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
+ .debug_loc     0x000000e2      0x2d4 MainController.o
+ .debug_loc     0x000003b6      0x2b5 MotorCtrl.o
+ .debug_loc     0x0000066b      0xe57 ../../Lib\libLiftLibrary.a(LiftLibrary.o)
 
 .debug_macinfo
  *(.debug_macinfo)

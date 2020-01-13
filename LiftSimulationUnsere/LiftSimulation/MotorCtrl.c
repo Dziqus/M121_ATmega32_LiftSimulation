@@ -70,14 +70,17 @@ void MotorCtrl_Moving(Message* msg)
 		SetState(&_motorCtrl.fsm, Await_DoorOpen);
 		_motorCtrl.start = msg->MsgParamLow / POS_STEPS_PER_FLOOR;
 		SetDoorState(DoorOpen, _motorCtrl.target);
+		
 	}	
 }
 
 void Await_DoorOpen(Message* msg)
 {
-	if (ReadDoorState((FloorType)_motorCtrl.start) == DoorOpen)
+	if(msg->Id == LiftDoorEvent && msg->MsgParamLow == DoorOpen)
 	{
+		Usart_PutChar(_motorCtrl.start);
 		SetState(&_motorCtrl.fsm, MotorCtrl_Stopped);
+		Message_ElevatorReady(msg);
 	}
 }
 
